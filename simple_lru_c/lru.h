@@ -1,3 +1,6 @@
+#include <pthread.h>
+
+
 // lru.c
 struct cacheNode;
 typedef struct cacheNode cacheNode;

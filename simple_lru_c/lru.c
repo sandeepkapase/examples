@@ -20,13 +20,16 @@ cache * newCache(int heapCapacity, int cacheSize) {
 
     pthread_mutex_init(&(c->lock), NULL);
 
+    c->cHeap.arr = NULL;
+
+
     c->cQueue.maxSize = cacheSize;
     c->cQueue.count = 0;
     c->cQueue.front = NULL;
     c->cQueue.rear = NULL;
 
     c->cHeap.capacity = heapCapacity;
-    c->cHeap.arr = malloc(sizeof(c->cHeap.arr)*heapCapacity);
+    c->cHeap.arr = (cacheNode **) malloc(sizeof(c->cHeap.arr)*heapCapacity);
     for (i=0; i < heapCapacity; i++)
         c->cHeap.arr[i] =  NULL;
 

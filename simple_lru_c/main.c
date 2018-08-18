@@ -12,8 +12,8 @@
 #include "lru.h"
 #include <pthread.h>
 
-#define HEAP_CAPACITY 1000
-#define CACHE_SIZE    100
+#define HEAP_CAPACITY 1000000
+#define CACHE_SIZE    100000
 #define MAX_THREADS 10
 
 void * refThread(void *arg) {

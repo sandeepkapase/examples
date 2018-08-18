@@ -8,7 +8,9 @@
 #include <stdexcept>
 #include <exception>
 using namespace std;
-// g++ -lpthread main.cpp  -o lru
+
+//g++ -lpthread -Wall main.cpp -o lru
+//g++ -std=c++11 -lpthread -Wall main.cpp -o lru
 
 #ifndef CACHE_LRU_H
 #define CACHE_LRU_H

@@ -7,7 +7,6 @@
 void * refThread(void *arg) {
     int key,i;
     //pid_t tid = syscall(__NR_gettid);
-
     cache *c = static_cast<cache *>(arg);
     srandom((int)time(NULL));
     for (i=0; i<HEAP_CAPACITY; i++) {
@@ -18,14 +17,17 @@ void * refThread(void *arg) {
 }
 
 
+
 int main(void) {
     int ret,i;
 
     cache *c = new cache(HEAP_CAPACITY, CACHE_SIZE);
     pthread_t refThr[MAX_THREADS];
+
     for (i=0; i<MAX_THREADS; i++) {
         ret = pthread_create(&refThr[i], NULL, refThread, c);
         if (ret != 0) {
+            cout << endl << "Thread create failed." << endl;
             return -1;
         }
     }
