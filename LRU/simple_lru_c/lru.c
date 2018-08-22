@@ -8,6 +8,19 @@
 #include "lru.h"
 #include <pthread.h>
 
+void destroyCache(cache *c) {
+    while (c->cQueue.front != NULL) {
+        cacheNode *n = c->cQueue.front;
+        if (n != NULL) {
+            c->cQueue.front = n->next;
+            free(n);
+        }
+    }
+    pthread_mutex_destroy(&(c->lock));
+    free(c->cHeap.arr);
+    free(c);
+}
+ 
 cache * newCache(int heapCapacity, int cacheSize) {
     int i;
 

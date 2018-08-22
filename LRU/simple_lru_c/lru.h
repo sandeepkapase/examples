@@ -37,3 +37,4 @@ struct cache {
 
 int refereCache(cache *csh, int key);
 cache * newCache(int heapCapacity, int cacheSize);
+void destroyCache(cache *);
