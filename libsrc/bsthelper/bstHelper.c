@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../../includes/bsthelper/bstHelper.h"
+#include <bsthelper/bstHelper.h>
 
 
 void printInorder(struct Tree* node)

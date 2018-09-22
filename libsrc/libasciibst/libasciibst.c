@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "../../includes/libasciibst/libasciibst.h"
+#include <libasciibst/libasciibst.h>
 
 typedef struct asciinode_struct asciinode;
 
