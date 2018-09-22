@@ -1,0 +1,26 @@
+CC=gcc
+LDFLAGS = -lm
+TARGET = delete_bst_node
+CFLAGS = -g -Wall -O3 -I../../includes
+
+LIBSRC = ../../libsrc
+recurfind = $(shell find $(LIBSRC) -ipath '$(1)')
+recurfindlocal = $(shell find ./ -ipath '$(1)')
+
+src := $(call recurfind,*bsthelper*.c) $(call recurfind,*libasciibst*.c) $(call recurfind,*mischelper*.c) $(call recurfindlocal,*.c)
+obj = $(src:.c=.o)
+#$(info    myobj is is $(myobj))
+#$(info    TARGET is is $(TARGET))
+
+
+#dep = $(obj:.o=.d) 	 # dependency file for each source
+#obj = $(csourcefile:.c=.o) $(cppsourcefile:.cc=.o)
+#$(info    src is $(src))
+#$(info    obj is $(obj))
+
+$(TARGET): $(obj)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+.PHONY: clean
+clean:
+	-rm -r $(obj) $(TARGET)
