@@ -31,14 +31,6 @@ class matixMinDistCalculator {
 
             }
 
-        void printParam(void) {
-            cout << endl << "rows: " << rows ;
-            cout << endl << "columns: " << columns;
-            cout << endl << "sourceX: " << sourceX;
-            cout << endl << "sourceY: " << sourceY;
-            cout << endl << "destX: " << destX;
-            cout << endl << "destY: " << destY;
-        }
         int findMinDistance(void) {
             checkUpdateVisit( sourceX, sourceY, Q1);
             if (found) return distance;
