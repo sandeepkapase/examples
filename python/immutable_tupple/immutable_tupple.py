@@ -25,6 +25,9 @@ Eg. We have tuple ""tpl"" which consist of three lists "l1", "l2", "l3"
 ** The ‘is’ operator compares the identity of two objects;
 ** The id() function returns an integer representing its identity.
 
+* Integers,  floats, Booleans, strings, frozen sets, and bytes) are immutable; their value doesn't change.
+* Lists, dictionaries, sets, arrays, and bytearrays on the other hand, are mutable.
+
  '''
 
 
