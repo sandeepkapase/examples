@@ -6,7 +6,7 @@ BUILD_DIR = build
 OBJ_DIR = $(BUILD_DIR)/objs
 BIN_DIR = $(BUILD_DIR)/bin
 LIBSRC = .
-OBJS = $(OBJ_DIR)/fun_ptr_example_1.o $(OBJ_DIR)/lib_a.o $(OBJ_DIR)/lib_b.o
+OBJS = $(OBJ_DIR)/fun_ptr_example_1.o $(OBJ_DIR)/lib_a.o
 
 MAIN=$(BIN_DIR)/fun_ptr_example_1
 $(MAIN): PREP $(OBJS)
@@ -18,9 +18,6 @@ PREP:
 	$(shell mkdir -p $(OBJ_DIR) $(BIN_DIR))
 
 $(OBJ_DIR)/lib_a.o: $(LIBSRC)/lib_a.c
-	$(CC) $(LDFLAGS) $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR)/lib_b.o:$(LIBSRC)/lib_b.c
 	$(CC) $(LDFLAGS) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/fun_ptr_example_1.o: fun_ptr_example_1.c
