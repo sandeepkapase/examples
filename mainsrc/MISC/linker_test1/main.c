@@ -3,6 +3,5 @@
 
 int main(void) {
   printf("\nThis is sample programm");
-  printf("\nThis is sample program");
   return 0;
 }

@@ -24,3 +24,7 @@ $(OBJ_DIR)/shortest_distance_between_two_element.o: shortest_distance_between_tw
 clean:
 	$(info rm -rf $(BUILD_DIR))
 	$(shell rm -rf $(BUILD_DIR))
+
+.PHONY: run
+run: $(MAIN)
+	$(MAIN) < input.txt
