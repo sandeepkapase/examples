@@ -1,0 +1,5 @@
+  /mnt/d/github/examples/mainsrc/MISC/dynamic_cast:
+  total used in directory 0 available 502140584
+  -rwxrwxrwx 1 sandeep sandeep 561 Jan 11 21:35 Makefile
+  -rwxrwxrwx 1 sandeep sandeep 477 Jan 11 20:49 dynamic_cast.cpp
+  -rwxrwxrwx 1 sandeep sandeep  44 Sep 28 18:17 input.txt
