@@ -70,9 +70,9 @@ int main()
   else
     printf("\nTree is BST\n");
   
-  if (checkBST_Wrap(root) != 0)
-    printf("\nTree is not BST\n");
-  else
-    printf("\nTree is BST\n");
+  /*  if (checkBST_Wrap(root) != 0)
+      printf("\nTree is not BST\n");
+      else
+      printf("\nTree is BST\n");*/
   return 0;
 }

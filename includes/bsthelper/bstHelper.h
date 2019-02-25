@@ -13,6 +13,7 @@ typedef  struct  Tree
 
 Tree * sortedArrayToBST(int [], int start, int end);
 int checkBST(Tree *node);
+int checkBST_meta(Tree *node, int *currentMax);
 int checkBST_FIX1(Tree *node, int *currentMax);
 int checkBST_Wrap(Tree *node);
 struct Tree * newNode(int data);
