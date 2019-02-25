@@ -1,0 +1,62 @@
+[
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/libasciibst.o", 
+            "../../../libsrc/libasciibst/libasciibst.c"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/BST/check_bst", 
+        "file": "../../../libsrc/libasciibst/libasciibst.c"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/mischelper.o", 
+            "../../../libsrc/mischelper/miscHelper.c"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/BST/check_bst", 
+        "file": "../../../libsrc/mischelper/miscHelper.c"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/check_bst.o", 
+            "check_bst.cpp"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/BST/check_bst", 
+        "file": "check_bst.cpp"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/bstHelper.o", 
+            "../../../libsrc/bsthelper/bstHelper.c"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/BST/check_bst", 
+        "file": "../../../libsrc/bsthelper/bstHelper.c"
+    }
+]
