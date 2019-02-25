@@ -54,16 +54,50 @@ Tree * deleteNode(Tree * node, int data) {
     return node;
 }
 
+struct Tree * arrayToBST_meta(int *arr, int beg, int end) {
+  struct Tree *node = (struct Tree *)malloc(sizeof(struct Tree));
+  int mid = (beg+end)/2;
+
+  if (node == NULL)
+    return NULL;
+
+  node->data = arr[mid];
+  node->left = node->right = NULL;
+  //printf("\nAdded %d start %d end %d\n", arr[mid], beg, end);
+  //printf("\nstart end %d %d\n", beg,end);
+  //sleep(1);
+  if (beg == end) {
+    return node;
+  } else {
+    if (beg <= mid-1)
+      node->left = arrayToBST_meta(arr, beg, mid-1);
+    if (mid+1 <= end)
+      node->right = arrayToBST_meta(arr, mid+1, end);
+    return node;
+  }
+}
+
+
+struct Tree * arrayToBST(int *arr, int size) {
+  return arrayToBST_meta(arr, 0, size-1);
+}
+
 int main()
 {
   Tree * root;
+  int arr[1000];
   //int arr[] = {10,20,40,30,45,50,55};
-  int arr[] = {10,20,25,30,45,50,55}; // replace 40 by 25 to correct tree
-  //fillSequentialArray(arr,1000);
-  //srand(time(NULL));
+  //int arr[] = {10,20,25,30,45,50,55}; // replace 40 by 25 to correct tree
+  fillSequentialArray(arr,1000);
+  srand(time(NULL));
   //root = sortedArrayToBST(arr+(rand()%100), 0, (pow(2,5)-2));
-  root = sortedArrayToBST(arr, 0, (pow(2,3)-2));
+  //root = arrayToBST(arr+(rand()%100), (pow(2,4)-2));
+  //int numNodes =  (pow(2,4)-2)+1;
+  //printf("\nNodes: %d\n", numNodes);
+  root = arrayToBST(arr+(rand()%100), 9);
+  //root = arrayToBST(arr, (sizeof(arr)/sizeof(int))-1);
   print_ascii_tree(root);
+  return 0;
   //  printf("\n%d", checkBST(root));
   if (checkBST(root) == -1)
     printf("\nTree is not BST\n");
