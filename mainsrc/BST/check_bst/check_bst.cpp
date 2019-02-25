@@ -3,6 +3,7 @@
 #include<time.h>
 #include<unistd.h>
 #include<math.h>
+#include<limits.h>
 
 #include <libasciibst/libasciibst.h>
 #include <bsthelper/bstHelper.h>
@@ -55,26 +56,23 @@ Tree * deleteNode(Tree * node, int data) {
 
 int main()
 {
-    Tree * root;
-    int arr[1000], data;
-    fillSequentialArray(arr,1000);
-    srand(time(NULL));
-    root = sortedArrayToBST(arr+(rand()%100), 0, (pow(2,4)-2));
-
-#ifdef LIB_ASCII_BST
-    print_ascii_tree(root);
-#else
-    printInorder(root);
-#endif
-    while(root != NULL) {
-        printf("\nEnter node to delete: ");
-        scanf("%d", &data);
-        root = deleteNode(root, data);
-#ifdef LIB_ASCII_BST
-        print_ascii_tree(root);
-#else
-    printInorder(root);
-#endif
-    }
-    return 0;
+  Tree * root;
+  //int arr[] = {10,20,40,30,45,50,55};
+  int arr[] = {10,20,40,30,45,50,55}; // replace 40 by 25 to correct tree
+  //fillSequentialArray(arr,1000);
+  //srand(time(NULL));
+  //root = sortedArrayToBST(arr+(rand()%100), 0, (pow(2,5)-2));
+  root = sortedArrayToBST(arr, 0, (pow(2,3)-2));
+  print_ascii_tree(root);
+  //  printf("\n%d", checkBST(root));
+  if (checkBST(root) == -1)
+    printf("\nTree is not BST\n");
+  else
+    printf("\nTree is BST\n");
+  
+  if (checkBST_Wrap(root) != 0)
+    printf("\nTree is not BST\n");
+  else
+    printf("\nTree is BST\n");
+  return 0;
 }

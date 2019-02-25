@@ -12,6 +12,9 @@ typedef  struct  Tree
 } Tree;
 
 Tree * sortedArrayToBST(int [], int start, int end);
+int checkBST(Tree *node);
+int checkBST_FIX1(Tree *node, int *currentMax);
+int checkBST_Wrap(Tree *node);
 struct Tree * newNode(int data);
 void printInorder(struct Tree* node);
 #endif
