@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int isDelm(char c, char *del) {
+int isDelm(char c, const char *del) {
   while(*del != '\0') {
     if (*del == c)
       return 1;
@@ -10,7 +10,7 @@ int isDelm(char c, char *del) {
   return 0;
 }
 
-char * my_strtok(char *srcBeg, char *del) {
+char * my_strtok(char *srcBeg, const char *del) {
   static int curIndex = 0;
   static char * src = NULL;
   char * retPtr = NULL;
