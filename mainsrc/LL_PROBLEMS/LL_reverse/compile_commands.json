@@ -1,0 +1,32 @@
+[
+    {
+        "arguments": [
+            "gcc", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/LL_reverse.o", 
+            "LL_reverse.c"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/LL_PROBLEMS/LL_reverse", 
+        "file": "LL_reverse.c"
+    }, 
+    {
+        "arguments": [
+            "gcc", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/ll_helper.o", 
+            "../../../libsrc/ll_helper/ll_helper.c"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/LL_PROBLEMS/LL_reverse", 
+        "file": "../../../libsrc/ll_helper/ll_helper.c"
+    }
+]
