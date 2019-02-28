@@ -9,7 +9,7 @@ void fillSequentialArray(int arr[], int size) {
         arr[i] = i;
 }
 
-/* Fill array with uniq random number below MOD_VAL */
+/* Fill array with uniq random number below MOD_VAL (positive) */
 void fillArrUniqRandom(int arr[], int n) {
   srand(time(NULL));
   int base = rand() % MOD_VAL;
@@ -28,6 +28,20 @@ void fillArrUniqRandom(int arr[], int n) {
       arr[y] = tmp;
     }
   }
+}
+
+/* Fill array with random number below MOD_VAL (positive) */
+void fillArrRandom(int arr[], int n) {
+  srand(time(NULL));
+  for (int i=0; i<n; i++)
+    arr[i] = rand()%100;
+}
+
+/* Fill array with random number below MOD_VAL (negative) */
+void fillArrRandomPN(int arr[], int n) {
+  srand(time(NULL));
+  for (int i=0; i<n; i++)
+    arr[i] = rand()%2 ? rand()%100 : rand()%100*-1;
 }
 
 void printArr(int arr[], int n) {

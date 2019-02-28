@@ -1,0 +1,32 @@
+[
+    {
+        "arguments": [
+            "gcc", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/mischelper.o", 
+            "../../../libsrc/mischelper/miscHelper.c"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/SORT/counting_sort", 
+        "file": "../../../libsrc/mischelper/miscHelper.c"
+    }, 
+    {
+        "arguments": [
+            "gcc", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/counting.o", 
+            "counting.c"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/SORT/counting_sort", 
+        "file": "counting.c"
+    }
+]
