@@ -51,3 +51,11 @@ void printArr(int arr[], int n) {
    }
   printf("\n");
 }
+
+int getMax(int arr[], int n) {
+  int max = arr[n-1];
+  while(--n>=0)
+    if (max < arr[n])
+      max = arr[n];
+  return max;
+}

@@ -10,14 +10,6 @@ void swap_meta(int arr[], int i, int j) {
   arr[j] = tmp;
 }
 
-int getMax(int arr[], int n) {
-  int max = arr[n-1];
-  while(--n>=0)
-    if (max < arr[n])
-      max = arr[n];
-  return max;
-}
-
 // positive numbers only
 void countingSorta(int arr[], int n) {
   int indexArr[MAX_VAL] = {0}, maxVal = MAX_VAL, index=0;
