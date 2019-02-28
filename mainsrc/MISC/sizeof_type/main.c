@@ -4,10 +4,14 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <time.h>
+#define my_sizeof(x) (size_t)((char *)(&x+1)-(char*)(&x))
+//#define my_sizeof(x) (size_t)((&x+1)-(&x))
+#define my_sizeoftype(x) (size_t)(((x*)NULL)+1)
 
 int main() {
   long i;
-  printf("\nSize of type int is : %d\n", (char*)(&i+1)-(char *)(&i));
+  printf("\nSize of type int is : %ld\n", my_sizeof(i));
+  printf("\nSize of type int is : %ld\n", my_sizeoftype(long));
   return 0;
 }
 
