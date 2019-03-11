@@ -1,0 +1,32 @@
+[
+    {
+        "arguments": [
+            "gcc", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/ll_helper.o", 
+            "../../../libsrc/ll_helper/ll_helper.c"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/LL_PROBLEMS/LL_one_gap_pair_swap", 
+        "file": "../../../libsrc/ll_helper/ll_helper.c"
+    }, 
+    {
+        "arguments": [
+            "gcc", 
+            "-c", 
+            "-g", 
+            "-Wall", 
+            "-O3", 
+            "-I../../../includes", 
+            "-o", 
+            "build/objs/LL_one_gap_pair_swap.o", 
+            "LL_one_gap_pair_swap.c"
+        ], 
+        "directory": "/mnt/d/github/examples/mainsrc/LL_PROBLEMS/LL_one_gap_pair_swap", 
+        "file": "LL_one_gap_pair_swap.c"
+    }
+]
