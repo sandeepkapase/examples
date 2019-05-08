@@ -14,5 +14,7 @@ end = time.time()
 
 print('Time taken in seconds -', end - start)
 
-# Average time required : 12 seconds
 # (cpu i5/16Gb/ssd/ubuntu 18.04/kernel 5.1)
+# cpu_bound_bottle_neck_mprocess.py:# Average time required : 4 seconds
+# cpu_bound_bottle_neck_mthreaded.py:# Average time required : 33 seconds
+# cpu_bound_bottle_neck_single.py:# Average time required : 12 seconds

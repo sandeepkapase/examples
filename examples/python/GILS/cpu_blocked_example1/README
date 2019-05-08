@@ -8,5 +8,14 @@ improvement but it actually degraded performance of execution i.e. due to GIL.
 Conclusion:
 ============
 In python, CPU intensive workload execution with multiple thread will actually
-degrade performance of execution.
+degrade performance of execution due to global interpreter lock (GIL).
+Using multiprocessing module can help in this situation.
 
+From numbers below on given config/machine, we can see that multiprocessing module
+have much better performance improvement thant non threaded and threaded exectuion.
+
+
+# (cpu i5/16Gb/ssd/ubuntu 18.04/kernel 5.1)
+# cpu_bound_bottle_neck_mprocess.py:# Average time required : 4 seconds
+# cpu_bound_bottle_neck_mthreaded.py:# Average time required : 33 seconds
+# cpu_bound_bottle_neck_single.py:# Average time required : 12 seconds
