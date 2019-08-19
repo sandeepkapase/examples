@@ -9,8 +9,7 @@ import (
 	"os"
 )
 
-const httpEndpoint = "http://ec2-100-25-10-35.compute-1.amazonaws.com"
-const httpProtocol = "http"
+var snsTopicARN = "arn:aws:sns:us-east-1:361108732765:"
 
 var awsRegion = "us-east-1"
 var endpoint = ""
@@ -19,7 +18,7 @@ var ak = os.Getenv("AWS_ACCESS_KEY_ID")
 var sk = os.Getenv("AWS_SECRET_ACCESS_KEY")
 
 //subscribe sends a subscribe request to SNS topic and initiates the subscritption process
-func topicAdd(topicName string) {
+func publishMsg(topicName string, message string) {
 
 	cfg := aws.Config{}
 	cfg.Region = &awsRegion
@@ -33,7 +32,13 @@ func topicAdd(topicName string) {
 	}
 	svc := sns.New(sess)
 
-	resp, err := svc.CreateTopic(&sns.CreateTopicInput{Name: &topicName})
+	snsTopicARN = snsTopicARN + topicName
+	resp, err := svc.Publish(&sns.PublishInput{
+		Message:           &message,
+		TopicArn:          &snsTopicARN,
+		MessageAttributes: map[string]*sns.MessageAttributeValue{},
+	})
+
 	if err != nil {
 		fmt.Println("Unable to create Topic: ", err)
 		return
@@ -51,10 +56,12 @@ func getenv(key, defaultValue string) string {
 }
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("Topic name expected")
+	if len(os.Args) != 3 {
+		fmt.Println("Topic name and message  expected")
 		return
 	}
-	fmt.Println(os.Args[1])
-	topicAdd(os.Args[1])
+	fmt.Println("\nTopic Name : ", os.Args[1])
+	fmt.Println("\nMessage : ", os.Args[2])
+	//publishMsg(topicName, message)
+	publishMsg(os.Args[1], os.Args[2])
 }
