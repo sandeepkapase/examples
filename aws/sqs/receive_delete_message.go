@@ -31,11 +31,19 @@ func main() {
 		QueueUrl:            aws.String(QueueUrl),
 		MaxNumberOfMessages: aws.Int64(3),
 		VisibilityTimeout:   aws.Int64(20),
-		WaitTimeSeconds:     aws.Int64(20),
+		WaitTimeSeconds:     aws.Int64(5),
 	}
 	receive_resp, err := svc.ReceiveMessage(receive_params)
 	if err != nil {
+		fmt.Printf("Error returned by sqs: %v", err)
 		log.Println(err)
+		return
+	}
+
+	mlen := len(receive_resp.Messages)
+	if (mlen < 1) {
+		fmt.Println("No message found on queue")
+		return
 	}
 	fmt.Printf("[Receive message] \n%v \n\n", receive_resp)
 
