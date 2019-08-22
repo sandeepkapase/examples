@@ -1,11 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
 func hello_World() (string, error) {
-	return "Hello world lambda", nil
+	fmt.Printf("FHello world lambda")
+	return "RHello world lambda", nil
 }
 
 func main() {
