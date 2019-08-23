@@ -1,5 +1,8 @@
 #!/bin/bash -
-source ./data.sh
+SCRIPT=$(readlink -f $0)
+SCRIPTPATH=`dirname $SCRIPT`
+source $SCRIPTPATH/subOps/data.sh
+
 # ==> delete lambda,queue,mapping
 # ==> create lambda,queue,mapping
 

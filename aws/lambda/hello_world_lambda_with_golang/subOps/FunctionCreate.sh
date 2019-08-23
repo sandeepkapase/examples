@@ -1,7 +1,7 @@
 #!/bin/bash -
 SCRIPT=$(readlink -f $0)
 SCRIPTPATH=`dirname $SCRIPT`
-source $SCRIPTPATH/subOps/data.sh
+source $SCRIPTPATH/data.sh
 
 > $LOGFILE
 
@@ -17,24 +17,6 @@ then
 else
     echo Failed to Create function $FUNCTION_NAME
 fi
-
-
-# create QUEUE
-if aws sqs create-queue --queue-name $QUEUE_NAME &>> $LOGFILE
-then
-    echo Queue created successfully : $QUEUE_NAME
-else
-    echo Failed to creat Queue : $QUEUE_NAME
-fi
-
-# create event mapping
-if aws lambda create-event-source-mapping --function-name $FUNCTION_NAME --batch-size 1 --event-source-arn arn:aws:sqs:us-east-1:361108732765:$QUEUE_NAME &>> $LOGFILE
-then
-    echo function queue event mapping done successfully.
-else
-    echo Failed to create function queue event mapping.
-fi
-
 
 # invoke function
 aws lambda invoke --function-name $FUNCTION_NAME out.json --log-type Tail &>> $LOGFILE
