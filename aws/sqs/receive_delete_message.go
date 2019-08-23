@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sqs"
+	"log"
 )
 
 const (
-	QueueUrl    = "https://sqs.us-east-1.amazonaws.com/361108732765/dcp_sdk_sns_at"
+	QueueUrl    = "https://sqs.us-east-1.amazonaws.com/361108732765/ATQueue"
 	Region      = "us-east-1"
 	CredPath    = "/home/sandeepk/.aws/credentials"
 	CredProfile = "default"
@@ -41,7 +41,7 @@ func main() {
 	}
 
 	mlen := len(receive_resp.Messages)
-	if (mlen < 1) {
+	if mlen < 1 {
 		fmt.Println("No message found on queue")
 		return
 	}

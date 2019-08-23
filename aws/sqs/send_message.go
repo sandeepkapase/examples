@@ -2,16 +2,17 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"time"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sqs"
+	"strconv"
+	"time"
 )
 
 const (
-	QueueUrl    = "https://sqs.us-east-1.amazonaws.com/361108732765/dcp_sdk_sns_at"
+	//QueueUrl    = "https://sqs.us-east-1.amazonaws.com/361108732765/dcp_sdk_sns_at"
+	QueueUrl    = "https://sqs.us-east-1.amazonaws.com/361108732765/ATQueue"
 	Region      = "us-east-1"
 	CredPath    = "/home/sandeepk/.aws/credentials"
 	CredProfile = "default"
@@ -26,13 +27,13 @@ func main() {
 	})
 
 	svc := sqs.New(sess)
-    msg := "time: " + strconv.FormatInt(time.Now().UnixNano(),10)
-	
+	msg := "time: " + strconv.FormatInt(time.Now().UnixNano(), 10)
+
 	// Send message
 	send_params := &sqs.SendMessageInput{
-		MessageBody:  aws.String(msg), 
-		QueueUrl:     aws.String(QueueUrl),       // Required
-		DelaySeconds: aws.Int64(3),               // (optional) 傳進去的 message 延遲 n 秒才會被取出, 0 ~ 900s (15 minutes)
+		MessageBody:  aws.String(msg),
+		QueueUrl:     aws.String(QueueUrl),
+		DelaySeconds: aws.Int64(3),
 	}
 	send_resp, err := svc.SendMessage(send_params)
 	if err != nil {

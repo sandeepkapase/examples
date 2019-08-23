@@ -7,9 +7,13 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sns"
 	"os"
+	"strconv"
+	"time"
 )
 
 var snsTopicARN = "arn:aws:sns:us-east-1:361108732765:"
+
+//var snsTopicARN = "arn:aws:sns:us-east-1:361108732765:ATtopicX"
 
 var awsRegion = "us-east-1"
 var endpoint = ""
@@ -18,7 +22,7 @@ var ak = os.Getenv("AWS_ACCESS_KEY_ID")
 var sk = os.Getenv("AWS_SECRET_ACCESS_KEY")
 
 //subscribe sends a subscribe request to SNS topic and initiates the subscritption process
-func publishMsg(topicName string, message string) {
+func publishMsg(topicName string) {
 
 	cfg := aws.Config{}
 	cfg.Region = &awsRegion
@@ -31,6 +35,7 @@ func publishMsg(topicName string, message string) {
 		return
 	}
 	svc := sns.New(sess)
+	message := "time: " + strconv.FormatInt(time.Now().UnixNano(), 10)
 
 	snsTopicARN = snsTopicARN + topicName
 	resp, err := svc.Publish(&sns.PublishInput{
@@ -56,12 +61,12 @@ func getenv(key, defaultValue string) string {
 }
 
 func main() {
-	if len(os.Args) != 3 {
+	/*if len(os.Args) != 3 {
 		fmt.Println("Topic name and message  expected")
 		return
-	}
-	fmt.Println("\nTopic Name : ", os.Args[1])
-	fmt.Println("\nMessage : ", os.Args[2])
-	//publishMsg(topicName, message)
-	publishMsg(os.Args[1], os.Args[2])
+	}*/
+	//fmt.Println("\nTopic Name : ", os.Args[1])
+	//fmt.Println("\nMessage : ", os.Args[2])
+	publishMsg("ATtopicX")
+	//publishMsg(os.Args[1], os.Args[2])
 }

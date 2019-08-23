@@ -7,6 +7,8 @@ source $SCRIPTPATH/data.sh
 
 ############################## CREATE PART ##############################################
 # create function
+cd ! $SCRIPTPATH/.. && { echo Failed to lambda src dir ; exit -1 ; }
+pwd
 rm main &> /dev/null
 export GOOS=linux ; export GOARCH=amd64 ; if ! go build -o main hello_world.go &>> /dev/null ; then echo go build failed ; exit -1 ; fi
 if ! zip -j main.zip main &>> /dev/null ; then echo Create zip failed ; exit -1; fi
