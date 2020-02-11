@@ -1,0 +1,20 @@
+* Install redoc-cli
+** install npm package and add redoc-cli path to $PATH
+** command: 
+*** # redoc-cli serve ~/Downloads/swagger.json
+*** This will provide url to browse through swagger api documentations.
+** Sources:
+*** https://github.com/Redocly/redoc/blob/master/cli/README.md
+*** https://github.com/Redocly/redoc
+
+* go-swagger
+** This can be used to server swagger UI
+** Validate swagger doc/json
+** Generate go api server
+** Generate go api client
+** Command:
+*** # swagger serve http://127.0.0.1:8000/swagger.json
+*** Here swagger.json is locat hosted with simple http server
+****  Eg. # webfsd -4 -d -F
+** Sources:
+** https://github.com/go-swagger/go-swagger
