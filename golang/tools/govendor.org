@@ -1,0 +1,5 @@
+* Vendor depedency for golang repository:
+** Eg. govendor
+*** govendor fetch github.org/xyz.com/devkit/^@master
+*** specifies the govendor folder and subfolders. Useful when don't want partial package/repository.
+*** Here @master ==> get content from master branch
