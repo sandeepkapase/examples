@@ -1,0 +1,5 @@
+* don't use ALL_CAPS in Go names; use CamelCase
+
+* useful go tools/packages:
+** https://github.com/mgechev/revive ==> dropin replacement for golintv
+** https://github.com/TrueFurby/go-callvis ==> call graph

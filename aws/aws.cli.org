@@ -1,0 +1,2 @@
+* Send message to SQS:
+** # aws sqs send-message --queue-url https://sqs.us-east-2.amazonaws.com/123456789/SQS_TO_LAMBDA_IS_FINALLY_HERE_YAY --message-body "hello, world"
