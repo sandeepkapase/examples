@@ -3,3 +3,20 @@
 * useful go tools/packages:
 ** https://github.com/mgechev/revive ==> dropin replacement for golintv
 ** https://github.com/TrueFurby/go-callvis ==> call graph
+** https://github.com/emacsmirror/godoctor ==> golang refactoring engine (emacs plugin support)
+
+* Unit Test:
+=============
+** Open visual Web UI for code coverage
+*** # test -coverprofile cover.out
+*** # go tool cover -html=cover.out
+
+** Open visual Web UI for code coverage for particular Unit test
+*** # gotest git.druva.org/druva.com/RealizeCommon/licensing -v -coverprofile=coverage.out -run Test_ListCustomers ;  go tool cover -html=coverag
+*** ==> Here "Test_ListCustomers" unit test will be executed from package git.druva.org/druva.com/RealizeCommon/licensing
+
+** Color output for go test
+*** Install: go get -u github.com/cweill/gotests/...
+*** run "gotest" instead of "go test"
+*** parameter to "go test" are also valid for "gotest"
+*** show green/read output depeneding on test success/faillure.
