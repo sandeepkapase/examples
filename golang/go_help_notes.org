@@ -22,3 +22,6 @@
 *** run "gotest" instead of "go test"
 *** parameter to "go test" are also valid for "gotest"
 *** show green/read output depeneding on test success/faillure.
+
+** go package documentations
+** godoc -http=:6060 ==> browse golang package documentations
