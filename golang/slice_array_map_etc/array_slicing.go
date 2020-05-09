@@ -12,12 +12,12 @@ eg.
 slicing required two input 'x' and 'y' numbers
 Eg. arr[x:y]
     Resultant capacity = existing capacity - x
-    Resultant length   = y
+    Resultant length   = y - x
     Conditions ==> y > x always, y should be greated current capacity of arr
     resultant array will start point to 'current pointer' + x
 
    arr[0:4] ==> {2, 3, 5, 7}
-   arr[2:4] ==> {5, 7, 11, 13}
+   arr[2:4] ==> {5, 7}
 */
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 	printSlice(s)
 
 	// Drop its first two values.
-	s = s[2:6]
+	s = s[2:4] // not that this will reset pointer of s to third element of s
 	printSlice(s)
 
 	// Drop its first two values.
