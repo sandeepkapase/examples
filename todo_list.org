@@ -1,0 +1,9 @@
+* REST API Basics
+* Flask rest api end to end
+* Falcon rest api end to end
+* Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server
+* GRPC
+** Advantages for rpc call
+** python, golang, C++ example
+   
+*** When to Use What: REST, GraphQL, Webhooks, & gRPC
