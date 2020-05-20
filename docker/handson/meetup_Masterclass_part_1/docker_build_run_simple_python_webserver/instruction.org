@@ -1,0 +1,17 @@
+* [[file+emacs:Dockerfile::FROM python:3][Dockerfile]] contains image description.
+** We specify base image
+** Work directory
+** Packages to be installed
+** Port to be used
+** Entrypoint/instruction
+* After creating [[file+emacs:Dockerfile::FROM python:3][Dockerfile]] for your application, run command to build image.
+** docker build -t simple_python3_web_server:0.0 .
+*** This will build image simple_python3_web_server with version/tag 0.0
+*** It download required base image references.
+* After successful completion, we should be able see new created image in listing.
+*** docker image ls
+* Now, we can run docker container from newly crated image.
+*** docker run -p 8000:8000 -it simple_python3_web_server:0.0
+**** This will run application and map docker port 8000 with local 8000 port
+**** Access http://localhost:8000 and you should see directory listing from /app directory in container
+

@@ -1,0 +1,58 @@
+* Docker related learning
+  ** [[https://www.youtube.com/watch?v=bMS60RzPTIE&t=4s][Kubernetes Masterclass Part I <meetup.com>]]
+
+|                                                                       |                                           |
+|-----------------------------------------------------------------------+-------------------------------------------|
+| Docker Command                                                        | Description/Command                       |
+|-----------------------------------------------------------------------+-------------------------------------------|
+| docker system prune                                                   | Removing All Unused Objects #             |
+| docker system prune --volumes                                         | Remove unused volumes                     |
+|                                                                       |                                           |
+| docker container ls -a                                                | list all containers                       |
+| docker volume ls                                                      | list volumes                              |
+|                                                                       |                                           |
+| docker container ls -a --filter status=exited --filter status=created | list all stopped containers               |
+| docker container prune                                                | remove all stopped containers             |
+| docker container prune --filter "until=12h"                           | remove conatainer created before 12Hrs    |
+| docker image prune                                                    | remove dangling images                    |
+| docker image rm  <id>                                                 | remove image                              |
+| docker image prune -a                                                 | remove unused images                      |
+| docker volume prune                                                   | remove all unused volumes                 |
+| docker network ls                                                     | list docker networks                      |
+| docker network rm <id>                                                | remove network with <id>                  |
+| docker network prune                                                  | remove unused networks                    |
+|                                                                       |                                           |
+|                                                                       |                                           |
+| docker pull <img>                                                     | pull image img1 from docker repository    |
+|                                                                       | (Repository: https://hub.docker.com)      |
+|                                                                       |                                           |
+| docker images                                                         | show locally stored images                |
+|                                                                       |                                           |
+| docker run -it -d <img>                                               | Create container from given image         |
+| docker container run <img>                                            |                                           |
+|                                                                       |                                           |
+| docker ps                                                             | Show running containers                   |
+| docker container list                                                 |                                           |
+|                                                                       |                                           |
+| docker ps -e                                                          | Show running and exited containers        |
+|                                                                       |                                           |
+| docker attach <id>                                                    | Attach to running container               |
+| docker exec -it <id> bash                                             |                                           |
+|                                                                       |                                           |
+| docker container stop <id>                                            |                                           |
+| docker stop <id>                                                      | stop runnig container                     |
+| docker kill <id>                                                      | forcefully stop container                 |
+|                                                                       |                                           |
+| docker commit <id> username/imageame                                  | Create new image from container id        |
+|                                                                       |                                           |
+| docker rmi                                                            | delete image from local storage           |
+|                                                                       | (use id from command : docker images)     |
+|                                                                       |                                           |
+| docker build <docker file>                                            | Build docker image from given docker file |
+|                                                                       |                                           |
+|-----------------------------------------------------------------------+-------------------------------------------|
+
+* Docker with namespace commands
+|--------------+-------------+---------------------------------|
+| docker image | pull  <img> | pull this image from repository |
+|              |             |                                 |
