@@ -1,17 +1,9 @@
-# Example for:
-#            1) Duplicate symbol example
-# We have passed macro parameter to avoid duplicate symbol error
-# By default functions are global, hence external linkage used for
-# referencing function from on compliation unit to another
-# While liking object files, linker identifies duplicate symbol and
-# gives error for linking operation.
-# command to run example application
-# make run "CFLAGS= -DRENAME_SUM"
+# Example for: C programming translation unit
+# We have created object file for two compilation/translation unit
+# and then done linking to create main binary.
 CC = gcc
 # append options to CFLAGS when passed from commandline
 override CFLAGS += -g -Wall -O3 -I.
-MAIN=main
-
 MAIN=main
 UNIT_ONE=unit_one
 UNIT_TWO=unit_two
@@ -30,7 +22,6 @@ $(UNIT_TWO): unit_two.c
 
 .PHONY: clean
 clean:
-#	$(info rm -rf $(UNIT_ONE) $(UNIT_TWO) $(MAIN) $(MAIN).o)
 	rm -rf $(UNIT_ONE) $(UNIT_TWO) $(MAIN) $(MAIN).o
 
 .PHONY: run
