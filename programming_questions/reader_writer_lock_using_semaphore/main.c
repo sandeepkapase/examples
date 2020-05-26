@@ -11,8 +11,8 @@
 #include <limits.h>
 #include <unistd.h>
 #include <string.h>
-#define MAX_SIZE 10000
-#define MAX_READER_WRITER 4
+#define MAX_SIZE 1000
+#define MAX_READER_WRITER 3
 
 int data=0;
 
