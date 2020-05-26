@@ -2,9 +2,11 @@
    scanario. This need improments/corrections
    CHECK which request processed by which reader writer:
    ./app | grep -E 'RT|WT'| grep -w 1234 ==> request 1234 processed by which reader and writer.
+   Compile: gcc -pthread -c reader_writer_lock.c -o reader_writer_lock ; gcc -pthread -c main.c -o main ; gcc -pthread reader_writer_lock main -o app 
 */
 
 #include "reader_writer_lock.h"
+//#include "reader_writer_lock.c"
 #include <stdio.h>
 #include <limits.h>
 #include <unistd.h>
@@ -49,7 +51,6 @@ void * writer(void *args) {
   int i=0;
   while(1) {
     writer_lock(&lock);
-    // pthread_mutex_lock(&readSync); // this is not requierd if we have atomic read queue push
     if (strlen(reader_queue) == 0) {
       pthread_mutex_lock(&writeSync); // writer queue synchronization
       i = data++;
@@ -59,7 +60,6 @@ void * writer(void *args) {
     } else {
       sleep(0);
     }
-    // pthread_mutex_unlock(&readSync);
     writer_unlock(&lock);
     if (data > MAX_SIZE ) return NULL; // some condition to quite processing.
     }
@@ -81,4 +81,5 @@ int main(void) {
     pthread_join(readerT[i], NULL);
     pthread_join(writerT[i], NULL);
   }
+  printlock();
 }
