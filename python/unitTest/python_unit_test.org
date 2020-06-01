@@ -1,0 +1,24 @@
+* unit testing in python:
+
+* [[file:test_simple_UnitTest_Example.py::#!/usr/bin/env python][simple_unitest_example.py]]
+** Test file should start with test_*.py
+** Test classes should be inherited from unittest.TestCase
+** The setUp() and tearDown() methods allow you to define instructions that will be executed before and after each test method.
+** run test by:
+|---------------------------------------------------------+------------------------------------------------|
+| ./simple_UnitTest_Example.py                            | run tests in file triggered by unittest.main() |
+|                                                         |                                                |
+| python -m unittest                                      | perform autodiscovery and run tests            |
+|                                                         |                                                |
+| python -m unittest simple_UnitTest_Example              | run test in given moduel.                      |
+|                                                         |                                                |
+| python -m unittest simple_UnitTest_Example.StringTests  | run test in module+class                       |
+|                                                         |                                                |
+| python -m unittest simple_UnitTest_Example.StringTests\ | rn test in many given module,class             |
+| simple_UnitTest_Example.StringTestsUpperLower           |                                                |
+|                                                         |                                                |
+| python -m unittest discover                             | perform test discovery                         |
+|                                                         |                                                |
+| python -m unittest discover -s project_directory        | discovery on specified project directory       |
+|                                                         |                                                |
+|                                                         |                                                |
