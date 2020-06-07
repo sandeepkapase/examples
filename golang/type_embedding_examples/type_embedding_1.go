@@ -10,6 +10,7 @@ instance.
 Note that method from embedded method will get called only if the
 object that is inherating anther object don't have that method.
 i.e. inherating object will override methods from inherited object.
+This is called as Type Shadowing
 */
 
 type S1 struct{}
