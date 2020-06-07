@@ -4,7 +4,7 @@ package main
 func main() {
 	s := "123"
 	ps := &s
-	b := []byte(*ps) // Not that new instance is created here and not just reference
+	b := []byte(*ps) // Note that new instance is created here and not just reference assignment
 	pb := &b
 
 	s += "4"

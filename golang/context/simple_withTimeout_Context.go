@@ -16,7 +16,7 @@ func main() {
 	ch := make(chan string, 1)
 
 	go func() {
-		// simulate processing here, processing request
+		// some processing here
 		time.Sleep(2 * time.Second) // making this 3 will result timeout
 		// fmt.Println("Now done with result") Note that even after timeout this goroutine will get executed
 		ch <- "done"

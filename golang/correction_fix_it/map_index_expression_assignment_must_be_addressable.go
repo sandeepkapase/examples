@@ -14,7 +14,7 @@ Pointer is address, so we can refer struct member with this reference/pointer
 */
 
 func main() {
-	//m := map[string]S{"x": S{"one"}}   // PROBLEM
+	//m := map[string]S{"x": S{"one"}} // PROBLEM
 	m := map[string]*S{"x": &S{"one"}} // FIX
 	m["x"].name = "two"
 	fmt.Println(m["x"].name)

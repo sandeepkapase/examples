@@ -1,0 +1,10 @@
+server:
+  port: 8000
+
+database:
+#  dbname: "sdkdb"
+  dbuser: "sdkuser"
+  dbpassword: "sdkpassword"
+
+EXAMPLE_VAR: "some config var XXX"
+EXAMPLE_PATH: "some config path YYY"
