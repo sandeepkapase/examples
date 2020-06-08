@@ -1,0 +1,22 @@
+|       |                                                       | Note                                       |
+|-------+-------------------------------------------------------+--------------------------------------------|
+| NTPL  | Native POSIX Threads Library                          |                                            |
+|       |                                                       |                                            |
+| POSIX | Portable Operating System Interface                   |                                            |
+|       |                                                       |                                            |
+| IEEE  | The Institute of Electrical and Electronics Engineers |                                            |
+|       |                                                       |                                            |
+| UTC   | Coordinated Universal Time.                           | This is time standard                      |
+|       |                                                       | NTP uses UTC to synchronize clocks of      |
+|       |                                                       | computers over the Internet                |
+|       |                                                       | UTC is the new GMT                         |
+|       |                                                       |                                            |
+| GMT   | Greenwich Mean Time                                   | This is time zone                          |
+|       |                                                       | Used some European and African countries   |
+|       |                                                       | Greenwich ==> London                       |
+|       |                                                       |                                            |
+| NTP   | Network Time Protocol                                 | It synchronize local clock synchronization |
+|       |                                                       | from time server. This time is used in     |
+|       |                                                       | different network protocol to send receive |
+|       |                                                       | packet/data.                               |
+
