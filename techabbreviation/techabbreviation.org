@@ -19,4 +19,15 @@
 |       |                                                       | from time server. This time is used in     |
 |       |                                                       | different network protocol to send receive |
 |       |                                                       | packet/data.                               |
+|       |                                                       |                                            |
+| CAP   | (Theorem )                                            | Software Architecture                      |
+|       | Concurrency                                           |                                            |
+|       | Availability                                          |                                            |
+|       | Partition tolerance                                   |                                            |
+|       |                                                       |                                            |
+| SOLOD | Single-responsiblity principle                        | Software Architecture                      |
+|       | Open-closed principle                                 |                                            |
+|       | Liskov substitution principle                         |                                            |
+|       | Interface segregation principle                       |                                            |
+|       | Dependency Inversion Principle                        |                                            |
 
