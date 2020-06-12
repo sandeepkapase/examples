@@ -8,6 +8,14 @@ class Vehicle {
 public:
   virtual void printVehicle() = 0;
   static Vehicle * Create(VehicleType type);
+  Vehicle& Vehicle::operator=(const Vehicle &rhs)
+  {
+    // Check for self-assignment!
+    if (this == &rhs)
+      return *this;
+    
+    return *this;
+  }
 };
 
 class Car: public Vehicle {
