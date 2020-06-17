@@ -16,8 +16,7 @@ func (o *Orange) Decrease(n int) {
 
 //func (o Orange) String() string { // This is correction
 func (o *Orange) String() string {
-	fmt.Println("XXX")
-	return fmt.Sprintf("%v", o.Quantity)
+	return fmt.Sprintf("--> %v", o.Quantity)
 }
 
 // In program above method "String" will not get execute because it is
@@ -28,6 +27,8 @@ func main() {
 	var orange Orange
 	orange.Increase(10)
 	orange.Decrease(5)
+	// This won't invoke "String"  as "String" is implemented for pointer
+	// To fix this we need to implement "String" for object which will include object and it's pointer as well
 	fmt.Println("Val with obj:", orange)
 
 	orangePtr := &orange
