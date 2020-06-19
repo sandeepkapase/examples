@@ -19,33 +19,12 @@
 
 
 using namespace std;
-class A
-{
-  int x;
-public:
-  // A() { x = 1; } // This is FIX.
-  A(int i) { x = i; }
-  void print() { cout << x; }
-};
-
-class B: virtual public A
-{
-public:
-  B():A(10) {  }
-};
-
-class C:  virtual public A
-{
-public:
-  C():A(10) {  }
-};
-
-class D: public B, public C {
-};
-
+class A { public: A(int i) {} };
+class B: public A { public: B(int i) {} };
+class C: public A { public: C(int i) {} };
+class D: public B, public C {  public: D(int x) {} };
 int main()
 {
-  D d;
-  d.print();
+  D d(1);
   return 0;
 }
