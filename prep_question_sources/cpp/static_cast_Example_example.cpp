@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::static_cast examples][static_cast examples]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,7 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
 class base {};
 class derived :public base {};
 class Other {};
@@ -29,3 +36,4 @@ int main() {
   // Error Here: Other class is completely different class (no inheritance relationship)
   //bptr = static_cast<Other *>(aptr);
 }
+// static_cast examples ends here

@@ -1,5 +1,20 @@
-using namespace std;
+// [[file:~/github/prep/cpp/Questions.org::abstract class example.][abstract class example.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
+
+using namespace std;
 class shape {
 public:
   virtual float area() = 0;
@@ -19,3 +34,4 @@ int main() {
   cout << "Square area: " << s.area();
   return 0;
 }
+// abstract class example. ends here

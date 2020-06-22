@@ -1,6 +1,22 @@
+// [[file:~/github/prep/cpp/Questions.org::const memeber function.][const memeber function.]]
+#include <typeinfo>
+#include <assert.h>
+#include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
+
 /* const member function can not modify data member of class object */
 using namespace std;
-#include <iostream>
+
 class point {
 private:
   int x,y;
@@ -19,3 +35,4 @@ int main() {
   point c{}; // default constructor call
   return 0;
 }
+// const memeber function. ends here

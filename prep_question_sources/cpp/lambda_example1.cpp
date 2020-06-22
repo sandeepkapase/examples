@@ -1,4 +1,18 @@
+// [[file:~/github/prep/cpp/Questions.org::c++ lambda example.][c++ lambda example.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
 
 using namespace std;
 
@@ -25,3 +39,4 @@ int main()
   [&] (const string &str) { cout << endl << "External string: " << name ; }(name);
   //printstring(name);
 }
+// c++ lambda example. ends here

@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::weak pointer example.][weak pointer example.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,8 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
-#include <memory>
 class Node {
 public:
   Node() { cout << "\nConstructor called";}
@@ -25,3 +31,4 @@ int main() {
   cout << "\nUse count :" << child->parent.use_count();
   return 0;
 }
+// weak pointer example. ends here

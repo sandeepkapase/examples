@@ -1,15 +1,14 @@
+// [[file:~/github/prep/cpp/Questions.org::c++ dequeue example.][c++ dequeue example.]]
+#include <deque>
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
 #include <numeric>
 #include <memory>
 #include <algorithm>
 #include <forward_list>
 #include <vector>
-#include <list>
-#include <tuple>
-#include <array>
-#include <queue>
-#include <deque>
-
+#include <stdexcept>
 
 
 
@@ -17,7 +16,6 @@
 
 
 using namespace std;
-
 template <typename T>
 ostream & operator << (ostream &c, T &t) {for( auto &i: t)  { printf("%3d", i); } ; return c;}
 int main(int argc, char*argv[]) {
@@ -44,3 +42,4 @@ int main(int argc, char*argv[]) {
   cout << string("\nmax size dq1:") << dq1.max_size();
   return 0;
 }
+// c++ dequeue example. ends here

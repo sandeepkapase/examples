@@ -1,14 +1,22 @@
+#include <future>
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
 
 
 
-  #include <iostream>
-  #include <future>
-  #include <unistd.h>
+using namespace std;
+
+
   int asyncfunc(int i) {
     //std::cout << "\nfunction id: " << i;
     return i*i;
@@ -30,10 +38,10 @@
     std::thread wthread[10];
     for (int i=0; i<10; i++) {
       wthread[i] = std::thread(threadfunc, i);
-}
+    }
     for (int i=0; i<10; i++) {
       wthread[i].join();
-}
+    }
 
     return 0;
   }

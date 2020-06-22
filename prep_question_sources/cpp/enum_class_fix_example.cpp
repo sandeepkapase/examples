@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::fix for enum using enum class][fix for enum using enum class]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,7 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
 enum class CarColor {Black, Blue, Red};
 enum class BikeColor {Black, Blue, Red};
 int main() {
@@ -17,3 +24,4 @@ int main() {
   cout << "\nColor: " << static_cast<std::underlying_type<BikeColor>::type>(d);
   return 0;
 }
+// fix for enum using enum class ends here

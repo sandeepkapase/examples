@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::dynamic cast use case exmaple2.][dynamic cast use case exmaple2.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,7 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
 
 class base {
 public:
@@ -37,3 +44,4 @@ int main() {
     }
   }
 }
+// dynamic cast use case exmaple2. ends here

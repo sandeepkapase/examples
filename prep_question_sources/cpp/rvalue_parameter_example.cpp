@@ -1,5 +1,12 @@
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,7 +14,7 @@
 
 
 using namespace std;
-#include <iostream>
+
 void func (const int &ref) { // const is best practise and not mandatory.
   cout << "\nCall by lvalue reference";
 }

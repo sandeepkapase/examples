@@ -1,21 +1,26 @@
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
 
 
 
-#include <iostream>
 using namespace std;
 
-void somefunc(char *ptr) {std::cout << "\nnono constant version call"; }
+void somefunc(char *ptr) {std::cout << "\nnon constant version call"; }
 void somefunc(char const *ptr) {std::cout << "\nCONSTANT version call";}
-void somefuncint(int &ptr) {std::cout << "\nnono constant reference version call"; }
+void somefuncint(int &ptr) {std::cout << "\nnon constant reference version call"; }
 void somefuncint(int const &ptr) {std::cout << "\nCONSTANT reference version call";}
 
 int main() {
-  std::cout << "Hello world!";
   char *ptr = "kapse";
   const char *ptr1 = "kapse";
   somefunc(ptr);

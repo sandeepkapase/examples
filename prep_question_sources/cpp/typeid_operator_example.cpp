@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::typeid operator in c+_][typeid operator in c+_]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,8 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
-#include <typeinfo>
 int main()
 {
   int i = 5;
@@ -36,3 +42,4 @@ int main()
 
   return 0;
 }
+// typeid operator in c+_ ends here

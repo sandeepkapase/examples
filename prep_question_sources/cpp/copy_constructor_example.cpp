@@ -1,17 +1,35 @@
+// [[file:~/github/prep/cpp/Questions.org::copy constructor example.][copy constructor example.]]
+#include <typeinfo>
+#include <assert.h>
+#include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
+
 /* This example will work without copy constructor because we very basic example.
    When we have complex object allocation where we need to carefully while copying state one object to another,
    copy constructor plays key role. */
 using namespace std;
-#include <iostream>
 class point {
-private:
+private :
   int x,y;
 public:
-  void pointX() const { cout <<"\nDefault constructor";}
-  // point() const { cout <<"\nconst Default constructor";}  ==> constructor can not be const
-  point() { cout <<"\nDefault constructor";}
-  point(int x, int y): x(x), y(y) {cout << "\nConstructor called\n"; }
-  point(const point &p) {x=p.x; y=p.y; cout << "Copy constructor called\n";}
+  point() { cout << "\ndefault constructor";}                                     // default constructor
+  point(const point &p) {cout << endl << "Copy Constructor: ";}                  // copy constructor
+  point (int x, int y): x(x), y(y) {cout << "\nparameterized constructor";}      // parameterized constructor
+  void operator = (point &x) {                                                   // = operator overloading
+    cout << endl << "= operator overloading\t" << x.x << "\t" << x.y;
+    this->x = x.x;
+    this->y = x.y;
+  }
 };
 
 point testfun(point x) {
@@ -27,3 +45,4 @@ int main() {
   testfun(p); // 2 calls : passing and returning.
   return 0;
 }
+// copy constructor example. ends here

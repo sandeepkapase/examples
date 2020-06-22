@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::shared pointer example.][shared pointer example.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,9 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
-#include <memory> // smart pointers.
-
 int main() {
   std::shared_ptr<int> p(new int(11));
   std::shared_ptr<int> q = std::make_shared<int>(22);
@@ -29,3 +34,4 @@ int main() {
 
   return 0;
 }
+// shared pointer example. ends here

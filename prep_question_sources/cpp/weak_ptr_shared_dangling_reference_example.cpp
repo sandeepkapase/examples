@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::weak pointer to identify dangling reference][weak pointer to identify dangling reference]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,8 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
-#include <memory>
 int main() {
   std::shared_ptr<int>shptr(new int(10));
   std::weak_ptr<int> wptr = shptr;
@@ -27,3 +33,4 @@ int main() {
     cout << "\nInvalid reference: ";
   return 0;
 }
+// weak pointer to identify dangling reference ends here

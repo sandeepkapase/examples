@@ -1,5 +1,12 @@
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,11 +14,11 @@
 
 
 using namespace std;
-#include <iostream>
 class Base
 {
 public:
-  virtual void myfun() final // Prevent implementing this function in derived class
+  //virtual void myfun() final // Prevent implementing this function in derived class
+  virtual void myfun() // append final to this function
   {
     cout << "myfun() in Base";
   }

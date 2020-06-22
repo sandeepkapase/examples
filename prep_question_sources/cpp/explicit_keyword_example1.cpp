@@ -1,5 +1,15 @@
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
 
 
 
@@ -15,7 +25,7 @@ public:
   bool operator ==(testclass t) { if (t.i == this->i && t.j == this->j) return true; else return false ; }
 };
 
-#include <iostream>
+
 int main() {
   testclass t1(1,0); // explicit call. no problem
   // In below initialization,constructor gets called implicitely.

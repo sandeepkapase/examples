@@ -1,5 +1,21 @@
-using namespace std;
+// [[file:~/github/prep/cpp/Questions.org::friend class example][friend class example]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
+
+using namespace std;
+
 class LinkedList{
 public:
   int search() {
@@ -20,3 +36,4 @@ private:
 int main() {
   return 0;
 }
+// friend class example ends here

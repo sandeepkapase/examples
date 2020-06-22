@@ -1,5 +1,21 @@
-using namespace std;
+// [[file:~/github/prep/cpp/Questions.org::operator overloading basic exmaple][operator overloading basic exmaple]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
+
+using namespace std;
+
 class point {
 private :
   int x,y;
@@ -23,6 +39,12 @@ public:
     point p(this->x-x.x, this->y-x.y);
     return  p;
   }
+  void operator -() {
+    this->x = -this->x;
+    this->y = -this->y;
+    cout << endl << "- operator overloading negate object\t" << this->x << "\t" << this->y;
+  }
+
   void operator = (point &x) {
     cout << endl << "= operator overloading\t" << x.x << "\t" << x.y;
     this->x = x.x;
@@ -37,6 +59,8 @@ int main() {
   x+y;   // + operator overloading.
   x-y;   // + operator overloading.
   point z = x; // copy constructor call.
+  -x; // - unary operator.
   //z.printpoint();
   return 0;
 }
+// operator overloading basic exmaple ends here

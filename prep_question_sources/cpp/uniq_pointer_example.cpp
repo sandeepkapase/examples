@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::unique pointer example][unique pointer example]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,8 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
-#include <memory> // smart pointers.
 void foo(int* p)
 {
   std::cout << *p << std::endl;
@@ -23,7 +29,8 @@ int main() {
   std::unique_ptr<int> p1(new int(42));
   std::unique_ptr<int> p2 = std::move(p1); // transfer ownership
   std::unique_ptr<int> p3,p4;
-  std::unique_ptr<int> p5(p1);
+  // std::unique_ptr<int> p5 = p1; // compiler error:  use of deleted function.
+  // std::unique_ptr<int> p5(p1); //  compiler error:  use of deleted function.
   p3 = std::move(p2);
   p2 = std::move(p3);
   p4 = std::make_unique<int>(199);
@@ -50,3 +57,4 @@ int main() {
   std::cout << "\nptr end" << *ptr << std::endl;
   return 0;
 }
+// unique pointer example ends here

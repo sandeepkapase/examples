@@ -1,5 +1,20 @@
-using namespace std;
+// [[file:~/github/prep/cpp/Questions.org::auto type example][auto type example]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
+
+using namespace std;
 int main() {
   auto i = 0 ; // i is of type int as it is initialized with int value.
   auto c = '0' ; // i is of type char as it is initialized with char value.
@@ -10,3 +25,4 @@ int main() {
   cout << "\n" << i3;
   return 0;
 }
+// auto type example ends here

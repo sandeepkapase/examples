@@ -21,15 +21,15 @@
 using namespace std;
 class B {
 public:
-  void fun(void) {}
+  // void fun(void) {} // error: reference to ‘fun’ is ambiguous
 };
 class D1: public B {};
 class D2: public B {};
 class DD1: public D1, D2 {
 public:
-  DD1() { fun(); }
+  DD1() { }
 };
 int main(int argc, char*argv[]) {
-  DD1 D;
+  // DD1 D; // Error: error: reference to ‘fun’ is ambiguous
   return 0;
 }

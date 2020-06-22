@@ -1,6 +1,22 @@
+// [[file:~/github/prep/cpp/Questions.org::pointer to memeber.][pointer to memeber.]]
+#include <typeinfo>
+#include <assert.h>
+#include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
+
 /* const member function can not modify data member of class object */
 using namespace std;
-#include <iostream>
+
 class point {
 private:
   int i,j;
@@ -36,3 +52,4 @@ int main() {
 
   return 0;
 }
+// pointer to memeber. ends here

@@ -1,14 +1,21 @@
+#include <queue>
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
 #include <numeric>
 #include <memory>
 #include <algorithm>
 #include <forward_list>
 #include <vector>
+#include <stdexcept>
 #include <list>
 #include <tuple>
 #include <array>
 #include <queue>
-
+#include <stack>
+#include <set>
+#include <map>
+#include <iterator>
 
 
 
@@ -16,7 +23,6 @@
 
 
 using namespace std;
-
 ostream & operator << (ostream &c, priority_queue<int> &q) {priority_queue <int>tmp = q; while(!q.empty()) {cout << " " << q.top(); q.pop();} q=tmp; return c;}
 
 int main(int argc, char*argv[]) {

@@ -1,10 +1,26 @@
+// [[file:~/github/prep/cpp/Questions.org::delete defaulted function.][delete defaulted function.]]
+#include <typeinfo>
+#include <assert.h>
+#include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
+
 /* In this example, we have constructor with int parameter, So compiler won't generate default constructor for this
    class. We can instruct compiler to generate default construct for this cas by "S() = default;"
    Delete keyword is used in simller way but for other purpose. We can prevent creation of making constructor deleted.
    OR we can prevent creation of object in particular way by makeing particular constructor deleted.
 */
 using namespace std;
-#include <iostream>
+
 class S {
   int x;
 public:
@@ -20,3 +36,4 @@ int main() {
   // S c(1,2); //  restricted/disabled.
   cout << "Hello world!";
 }
+// delete defaulted function. ends here

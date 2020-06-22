@@ -1,6 +1,12 @@
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
-
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -8,7 +14,7 @@
 
 
 using namespace std;
-#include <iostream>
+
 int main() {
   int x;
   int &refx = x;

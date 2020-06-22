@@ -1,14 +1,23 @@
+// [[file:~/github/prep/cpp/Questions.org::c++ queue basic example.][c++ queue basic example.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
 #include <numeric>
 #include <memory>
 #include <algorithm>
 #include <forward_list>
 #include <vector>
+#include <stdexcept>
+#include <queue>
 #include <list>
 #include <tuple>
 #include <array>
 #include <queue>
-
+#include <stack>
+#include <set>
+#include <map>
+#include <iterator>
+#include <fstream>
 
 
 
@@ -33,3 +42,4 @@ int main(int argc, char*argv[]) {
   cout << "\nQueue q1 after swap: " << q1;
   return 0;
 }
+// c++ queue basic example. ends here

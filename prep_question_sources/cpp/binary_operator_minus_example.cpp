@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::binary operator plus][binary operator plus]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,7 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
 class point {
 private:
   int x,y;
@@ -22,7 +29,7 @@ public:
   // This can be done with fried function as well.
   //friend point operator %(const point &p, const point &q);
 };
-  //point operator %(const point &p, const point &q) { cout << "\nF Modulus Bin operator call";  point s(p.x%q.x, p.y%q.y); return s;}
+//point operator %(const point &p, const point &q) { cout << "\nF Modulus Bin operator call";  point s(p.x%q.x, p.y%q.y); return s;}
 int main() {
   point p,q,r;
   r = p+q;
@@ -38,3 +45,4 @@ int main() {
 
   return 0;
 }
+// binary operator plus ends here

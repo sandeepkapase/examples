@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::mutable data member][mutable data member]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,7 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
 class point {
 private:
   int data;
@@ -22,3 +29,4 @@ int main() {
   cout << "\nData: " << p.getData();
   return 0;
 }
+// mutable data member ends here

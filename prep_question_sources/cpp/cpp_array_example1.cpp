@@ -1,12 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::c++ array example1.][c++ array example1.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
 #include <numeric>
 #include <memory>
 #include <algorithm>
 #include <forward_list>
 #include <vector>
-#include <list>
-#include <tuple>
-#include <array>
+#include <stdexcept>
 
 
 
@@ -43,3 +44,4 @@ int main(int argc, char*argv[]) {
   cout << string("arr1 data: ") << *(iarr1.data()+4) << endl;
   return 0;
 }
+// c++ array example1. ends here

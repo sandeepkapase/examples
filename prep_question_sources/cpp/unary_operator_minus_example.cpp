@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::unary operator minus][unary operator minus]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,7 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
 class point {
 private:
   int x,y;
@@ -23,3 +30,4 @@ int main() {
   p.printpoint();
   return 0;
 }
+// unary operator minus ends here

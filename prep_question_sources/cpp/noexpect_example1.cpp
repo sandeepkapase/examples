@@ -1,6 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::noexcept operator/function example.][noexcept operator/function example.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
-
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -8,9 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
-#include <iostream>
-#include <stdexcept>
 void foo() { throw std::runtime_error("oops"); }
 void bar() {}
 void tar() noexcept {}
@@ -24,3 +28,4 @@ int main() {
   std::cout << noexcept(1 + 1) << '\n'; // prints 1
   std::cout << noexcept(S()) << '\n';   // prints 1
 }
+// noexcept operator/function example. ends here

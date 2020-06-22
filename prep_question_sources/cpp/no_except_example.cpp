@@ -1,16 +1,19 @@
+// [[file:~/github/prep/cpp/Questions.org::noexcept operator/function example.][noexcept operator/function example.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
-
-
-
-
-
-
-
-using namespace std;
-#include <iostream>
-#include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
 #include <stdexcept>
+
+
+
+
+
+
 using namespace std;
 //void foo() noexcept     // see the noexcept specifier
 void foo() // see the noexcept specifier
@@ -33,3 +36,4 @@ int main()
     }
   return 0;
 }
+// noexcept operator/function example. ends here

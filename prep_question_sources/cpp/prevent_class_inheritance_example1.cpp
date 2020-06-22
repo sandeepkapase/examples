@@ -1,19 +1,28 @@
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
 
 
 
-using namespace std;
-#include <iostream>
-class Base final {};
-class Derived : public Base {};
+ using namespace std;
 
-int main()
-{
-  Derived d;
-  Base &b = d;
-  return 0;
-}
+// class Base final { // FIX: prevent inheritabce of this class
+ class Base { // append "final" to class name
+ };
+ class Derived : public Base {};
+
+ int main()
+ {
+   Derived d;
+   Base &b = d;
+   return 0;
+ }

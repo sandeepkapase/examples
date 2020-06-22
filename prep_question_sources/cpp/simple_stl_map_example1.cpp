@@ -1,18 +1,14 @@
+// [[file:~/github/prep/cpp/Questions.org::c++ STL map example1.][c++ STL map example1.]]
+#include <map>
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
 #include <numeric>
 #include <memory>
 #include <algorithm>
 #include <forward_list>
 #include <vector>
-#include <list>
-#include <tuple>
-#include <array>
-#include <queue>
-#include <stack>
-#include <set>
-#include <map>
-#include <iterator>
-
+#include <stdexcept>
 
 
 
@@ -66,3 +62,4 @@ int main(int argc, char*argv[]) {
 
   return 0;
 }
+// c++ STL map example1. ends here

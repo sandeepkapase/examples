@@ -1,5 +1,20 @@
-using namespace std;
+// [[file:~/github/prep/cpp/Questions.org::uniform variable initialization][uniform variable initialization]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
+
+
+
+
+
+
+using namespace std;
 int main() {
   int a = int(); //default initialization
   int b = 5; // decaring and initializing
@@ -21,3 +36,4 @@ int main() {
 
   return 0;
 }
+// uniform variable initialization ends here

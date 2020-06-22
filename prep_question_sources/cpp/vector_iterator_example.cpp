@@ -1,6 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::c++ vectro iterator example.][c++ vectro iterator example.]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
-
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -8,10 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
-#include <vector>
-#include <numeric>
-#include <algorithm>
 int main(int argc, char*argv[]) {
   vector <int> v(10);
   iota(begin(v), end(v), 0); //0 is the starting number
@@ -25,3 +28,4 @@ int main(int argc, char*argv[]) {
   cout << "\nFirst element: " << *v.rend() ;
   return 0;
 }
+// c++ vectro iterator example. ends here

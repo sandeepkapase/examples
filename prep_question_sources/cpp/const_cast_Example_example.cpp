@@ -1,5 +1,13 @@
+// [[file:~/github/prep/cpp/Questions.org::const_cast examples][const_cast examples]]
+#include <typeinfo>
+#include <assert.h>
 #include <iostream>
-#include <unistd.h>
+#include <numeric>
+#include <memory>
+#include <algorithm>
+#include <forward_list>
+#include <vector>
+#include <stdexcept>
 
 
 
@@ -7,7 +15,6 @@
 
 
 using namespace std;
-#include <iostream>
 class point {
 private:
   int data;
@@ -36,3 +43,4 @@ int main() {
   */
   return 0;
 }
+// const_cast examples ends here
