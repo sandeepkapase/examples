@@ -1,4 +1,4 @@
-// [[file:~/github/prep/ds_algorithm/sorting/Questions.org::c++ merge_sort_example1 example.][c++ merge_sort_example1 example.]]
+// [[file:~/github/prep/ds_algorithm/sorting/Questions.org::c++ quick_sort_example1 example.][c++ quick_sort_example1 example.]]
 #include <map>
 #include <list>
 #include <deque>
@@ -32,8 +32,8 @@ class Data {
 private:
   vector<int> Arr;
   sortorder sorted;
-  void mergeSort(int start, int end); // Actual merge sort function.
-  void merge(int start, int mid, int end); // Acutal merge sort function.
+  void quickSort(int start, int end); // Actual merge sort function.
+  int partition(int start, int end); // Acutal merge sort function.
 public:
   explicit Data ();
   void print ();
@@ -58,39 +58,37 @@ void Data::print () { // helper
 }
 
 void Data::sort(sortorder sort) { // Merge sort wrapper
-  mergeSort(0, Arr.size()-1);
   sorted = sort;
+  quickSort(0, Arr.size()-1);
 }
 
-void Data::merge(int start,int mid, int end)
+int Data::partition(int start, int end)
 {
-  int n1 = mid - start + 1, L[n1];
-  int n2 = end - mid, R[n2];
-  int i=0, j=0, k=start;
-
-  /* Copy data to auxiliary arrays */
-  while (i < n1) L[i++] = Arr[start + i];
-  while (j < n2) R[j++] = Arr[mid + 1 + j];
-
-  /* copy data in sorted order from auxiliary array */
-  for (i = 0, j = 0; i < n1 && j < n2; k++)
-    if (sorted == ASCENDING)
-      Arr[k] = L[i] <= R[j] ?  L[i++] : R[j++] ;
-    else
-      Arr[k] = L[i] >= R[j] ?  L[i++] : R[j++] ;
-
-  while (i < n1) Arr[k++] = L[i++]; // copy remaining data if any
-  while (j < n2) Arr[k++] = R[j++]; // copy remaining data if any
+  auto pivot = Arr[end];
+  auto nextPivot = start-1;
+  for (auto i=start; i<=end ; i++) {
+    if (Arr[i] < pivot && sorted == ASCENDING) {
+      nextPivot++;
+      swap(Arr[nextPivot], Arr[i]);
+    } else if (Arr[i] > pivot && sorted == DESCENDING) {
+      nextPivot++;
+      swap(Arr[nextPivot], Arr[i]);
+    }
+  }
+  nextPivot++;
+  swap(Arr[nextPivot], Arr[end]);
+  return nextPivot;
+  return 0;
 }
 
-void Data::mergeSort(int start, int end) {
+void Data::quickSort(int start, int end) {
   if(start < end) {
-    int mid = (start + end) / 2;
-    mergeSort(start, mid);
-    mergeSort(mid+1, end);
-    merge(start, mid, end);
+    int pivot = partition(start, end);
+    quickSort(start, pivot-1);
+    quickSort(pivot+1, end);
   }
 }
+
 int main(int argc, char*argv[]) {
   Data data;
   data.print();
@@ -100,4 +98,4 @@ int main(int argc, char*argv[]) {
   data.print();
   return 0;
 }
-// c++ merge_sort_example1 example. ends here
+// c++ quick_sort_example1 example. ends here
