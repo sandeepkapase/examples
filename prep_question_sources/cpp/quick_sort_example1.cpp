@@ -66,7 +66,7 @@ int Data::partition(int start, int end)
 {
   auto pivot = Arr[end];
   auto nextPivot = start-1;
-  for (auto i=start; i<=end ; i++) {
+  for (auto i=start; i<=end-1 ; i++) {
     if (Arr[i] < pivot && sorted == ASCENDING) {
       nextPivot++;
       swap(Arr[nextPivot], Arr[i]);
