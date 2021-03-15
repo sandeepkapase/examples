@@ -1,0 +1,2 @@
+* pyinstaller --help
+* pyinstaller --onefile myapp.py ==> this will create ./dist/myapp ELF executable.
