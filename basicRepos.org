@@ -1,0 +1,19 @@
+* My basic required repositories:
+|--------------------+--------------------------------------------------------------------|
+| Repository         | Details                                                            |
+|--------------------+--------------------------------------------------------------------|
+| config_utils       | Configuration info, setup details, helper script, Tools info       |
+|                    | https://github.com/sandeepkapase/config_utils                      |
+|                    |                                                                    |
+| examples           | org-balel tangel exported examples (examples from prep and others) |
+|                    | https://github.com/sandeepkapase/examples                          |
+|                    |                                                                    |
+| prep               | Interview preparation question for diffent categories              |
+|                    | https://github.com/sandeepkapase/prep                              |
+|                    |                                                                    |
+| porghelper         | Personal information/note/records                                  |
+|                    | https://github.com/sandeepkapase/SelfSharedOnly                    |
+|                    |                                                                    |
+| resourceReferences | Resource references for different topics                           |
+|                    | https://github.com/sandeepkapase/SelfSharedOnly                    |
+|--------------------+--------------------------------------------------------------------|
