@@ -1,0 +1,369 @@
+#+OPTIONS: toc:nil
+
+* RHSB-2022-001 Polkit Privilege Escalation - (CVE-2021-4034) fix and mitigation steps for GRIDScaler using RHEL 7.
+** Below are migigation steps for CVE-2021-4034.
+CVE-2021-4034 is vulnerability found on polkit's pkexec utility.
+Below instructions are applicable to GRIDScaler product using RHEL 7.
+More information can about CVE-2021-4034 can be found here: [[https://access.redhat.com/security/cve/CVE-2021-4034][CVE-2021-4034]]
+
+
+** Download updated polkit Package.
+Updated/fixed polkit package 'polkit-0.112-26.el7_9.1.x86_64.rpm' can be downloaded from here [[https://access.redhat.com/errata/RHSA-2022:0274][RHSA-2022:0274]]
+
+** Copy polkit package cluster node.
+Copy downloaded polkit package in last step to any GRIDScaler cluster node.
+    #+NAME: copy_polkit_to_cluster_node
+    #+HEADER: :results output :session :exports both
+    #+BEGIN_SRC sh :cache yes
+      scp ~/Downloads/polkit-0.112-26.el7_9.1.x86_64.rpm root@10.52.16.222:~/
+    #+END_SRC
+
+    #+RESULTS[c71fdea30dfb31585f6d5e6c09adb2491273af0d]: copy_polkit_to_cluster_node
+    : polkit-0.112-26.el7_9.1.x86_64.rpm              0%    0     0.0KB/s   --:-- ETApolkit-0.112-26.el7_9.1.x86_64.rpm            100%  170KB 138.9MB/s   00:00    
+
+** Login to cluster node.
+Login to GRIDScaler cluster node where updated polkit phackage is copied in last step.
+    #+NAME: login_to_cluster_node
+    #+HEADER: :results output :session :exports both
+    #+BEGIN_SRC sh :cache yes
+      ssh  root@10.52.16.222
+    #+END_SRC
+
+    #+RESULTS[2d3844eba098309f617560e09a62d10bca8f8160]: login_to_cluster_node
+
+** Check polkit version (pre-update)
+   Record polkit version on all cluster node. Note polkit release/version from all nodes.
+This can be used to cross-check version after polkit package update.
+    #+NAME: check_current_polkit_version
+    #+HEADER: :results output :session :exports both
+    #+BEGIN_SRC sh :cache yes
+      clush -a 'rpm -qi polkit | grep -E "Version|Release"'
+    #+END_SRC
+
+    #+RESULTS[16bb819e5bc779f85c5309383b2576712c40b234]: check_current_polkit_version
+    #+begin_example
+    10.52.16.223: Version     : 0.112
+    10.52.16.223: Release     : 26.el7
+    10.52.16.224: Version     : 0.112
+    10.52.16.224: Release     : 26.el7
+    10.52.16.225: Version     : 0.112
+    10.52.16.225: Release     : 26.el7
+    10.52.16.222: Version     : 0.112
+    10.52.16.222: Release     : 26.el7
+    10.52.16.187: Version     : 0.112
+    10.52.16.187: Release     : 26.el7
+    10.52.16.188: Version     : 0.112
+    10.52.16.188: Release     : 26.el7
+    #+end_example
+
+** Copy polkit package to all cluster node.
+   Now copy polkit package from local node to all node in GRIDScaler cluster.
+    #+NAME: copy_updated_polkit_package_to_cluster_nodes
+    #+HEADER: :results output :session :exports both
+    #+BEGIN_SRC sh :cache yes
+      clush -a -c ~/Downloads/polkit-0.112-26.el7_9.1.x86_64.rpm --dest=/tmp/
+    #+END_SRC
+
+    #+RESULTS[6507edfea4e32d6364de3f721356c30d602ebcf4]: copy_updated_polkit_package_to_cluster_nodes
+
+** Verify copied package.
+    Verify if package was succefully copied on all nodes where polkit version need to be updated.
+    #+NAME: verify_copied_polkit_package
+    #+HEADER: :results output :session :exports both
+    #+BEGIN_SRC sh :cache yes
+      clush -a  du -ks /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm
+    #+END_SRC
+
+    #+RESULTS[f38dbe681e0583b5894e7872361fdb7646dbbef6]: verify_copied_polkit_package
+    : 10.52.16.224: 172	/tmp/polkit-0.112-26.el7_9.1.x86_64.rpm
+    : 10.52.16.223: 172	/tmp/polkit-0.112-26.el7_9.1.x86_64.rpm
+    : 10.52.16.225: 172	/tmp/polkit-0.112-26.el7_9.1.x86_64.rpm
+    : 10.52.16.222: 172	/tmp/polkit-0.112-26.el7_9.1.x86_64.rpm
+    : 10.52.16.187: 172	/tmp/polkit-0.112-26.el7_9.1.x86_64.rpm
+    : 10.52.16.188: 172	/tmp/polkit-0.112-26.el7_9.1.x86_64.rpm
+
+** Update polkit package
+    Now update polkit package on all cluster nodes by:
+    #+NAME: update_polkit_package_on_cluster
+    #+HEADER: :results output :session :exports both
+    #+BEGIN_SRC sh :cache yes
+      clush -a yum -y localupdate  /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm
+    #+END_SRC
+
+    #+RESULTS[4c57d8a1a39e37a99fcf3dd2c560210f752fa368]: update_polkit_package_on_cluster
+    #+begin_example
+    10.52.16.223: Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-
+    10.52.16.223:               : manager, versionlock
+    10.52.16.224: Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-
+    10.52.16.224:               : manager, versionlock
+    10.52.16.225: Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-
+    10.52.16.225:               : manager, versionlock
+    10.52.16.222: Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-
+    10.52.16.222:               : manager, versionlock
+    10.52.16.223: 
+    10.52.16.223: This system is not registered with an entitlement server. You can use subscription-manager to register.
+    10.52.16.223: 
+    10.52.16.224: 
+    10.52.16.224: This system is not registered with an entitlement server. You can use subscription-manager to register.
+    10.52.16.224: 
+    10.52.16.222: 
+    10.52.16.222: This system is not registered with an entitlement server. You can use subscription-manager to register.
+    10.52.16.222: 
+    10.52.16.225: 
+    10.52.16.225: This system is not registered with an entitlement server. You can use subscription-manager to register.
+    10.52.16.225: 
+    10.52.16.223: Examining /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm: polkit-0.112-26.el7_9.1.x86_64
+    10.52.16.224: Examining /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm: polkit-0.112-26.el7_9.1.x86_64
+    10.52.16.223: Marking /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm as an update to polkit-0.112-26.el7.x86_64
+    10.52.16.223: Resolving Dependencies
+    10.52.16.223: --> Running transaction check
+    10.52.16.224: Marking /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm as an update to polkit-0.112-26.el7.x86_64
+    10.52.16.223: ---> Package polkit.x86_64 0:0.112-26.el7 will be updated
+    10.52.16.224: Resolving Dependencies
+    10.52.16.222: Examining /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm: polkit-0.112-26.el7_9.1.x86_64
+    10.52.16.225: Examining /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm: polkit-0.112-26.el7_9.1.x86_64
+    10.52.16.224: --> Running transaction check
+    10.52.16.224: ---> Package polkit.x86_64 0:0.112-26.el7 will be updated
+    10.52.16.223: ---> Package polkit.x86_64 0:0.112-26.el7_9.1 will be an update
+    10.52.16.222: Marking /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm as an update to polkit-0.112-26.el7.x86_64
+    10.52.16.225: Marking /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm as an update to polkit-0.112-26.el7.x86_64
+    10.52.16.222: Resolving Dependencies
+    10.52.16.225: Resolving Dependencies
+    10.52.16.222: --> Running transaction check
+    10.52.16.224: ---> Package polkit.x86_64 0:0.112-26.el7_9.1 will be an update
+    10.52.16.222: ---> Package polkit.x86_64 0:0.112-26.el7 will be updated
+    10.52.16.225: --> Running transaction check
+    10.52.16.225: ---> Package polkit.x86_64 0:0.112-26.el7 will be updated
+    10.52.16.222: ---> Package polkit.x86_64 0:0.112-26.el7_9.1 will be an update
+    10.52.16.225: ---> Package polkit.x86_64 0:0.112-26.el7_9.1 will be an update
+    10.52.16.187: Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-
+    10.52.16.187:               : manager, versionlock
+    10.52.16.188: Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-
+    10.52.16.188:               : manager, versionlock
+    10.52.16.187: 
+    10.52.16.187: This system is not registered with an entitlement server. You can use subscription-manager to register.
+    10.52.16.187: 
+    10.52.16.187: Examining /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm: polkit-0.112-26.el7_9.1.x86_64
+    10.52.16.187: Marking /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm as an update to polkit-0.112-26.el7.x86_64
+    10.52.16.187: Resolving Dependencies
+    10.52.16.187: --> Running transaction check
+    10.52.16.188: 
+    10.52.16.188: This system is not registered with an entitlement server. You can use subscription-manager to register.
+    10.52.16.188: 
+    10.52.16.187: ---> Package polkit.x86_64 0:0.112-26.el7 will be updated
+    10.52.16.187: ---> Package polkit.x86_64 0:0.112-26.el7_9.1 will be an update
+    10.52.16.188: Examining /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm: polkit-0.112-26.el7_9.1.x86_64
+    10.52.16.188: Marking /tmp/polkit-0.112-26.el7_9.1.x86_64.rpm as an update to polkit-0.112-26.el7.x86_64
+    10.52.16.188: Resolving Dependencies
+    10.52.16.188: --> Running transaction check
+    10.52.16.188: ---> Package polkit.x86_64 0:0.112-26.el7 will be updated
+    10.52.16.188: ---> Package polkit.x86_64 0:0.112-26.el7_9.1 will be an update
+    10.52.16.223: --> Finished Dependency Resolution
+    10.52.16.222: --> Finished Dependency Resolution
+    10.52.16.224: --> Finished Dependency Resolution
+    10.52.16.225: --> Finished Dependency Resolution
+    10.52.16.187: --> Finished Dependency Resolution
+    10.52.16.188: --> Finished Dependency Resolution
+    10.52.16.223: 
+    10.52.16.223: Dependencies Resolved
+    10.52.16.223: 
+    10.52.16.223: ================================================================================
+    10.52.16.223:  Package  Arch     Version              Repository                         Size
+    10.52.16.223: ================================================================================
+    10.52.16.223: Updating:
+    10.52.16.223:  polkit   x86_64   0.112-26.el7_9.1     /polkit-0.112-26.el7_9.1.x86_64   480 k
+    10.52.16.223: 
+    10.52.16.223: Transaction Summary
+    10.52.16.223: ================================================================================
+    10.52.16.223: Upgrade  1 Package
+    10.52.16.223: 
+    10.52.16.223: Total size: 480 k
+    10.52.16.223: Downloading packages:
+    10.52.16.223: Running transaction check
+    10.52.16.222: 
+    10.52.16.222: Dependencies Resolved
+    10.52.16.222: 
+    10.52.16.222: ================================================================================
+    10.52.16.222:  Package  Arch     Version              Repository                         Size
+    10.52.16.222: ================================================================================
+    10.52.16.222: Updating:
+    10.52.16.222:  polkit   x86_64   0.112-26.el7_9.1     /polkit-0.112-26.el7_9.1.x86_64   480 k
+    10.52.16.222: 
+    10.52.16.222: Transaction Summary
+    10.52.16.222: ================================================================================
+    10.52.16.222: Upgrade  1 Package
+    10.52.16.222: 
+    10.52.16.222: Total size: 480 k
+    10.52.16.222: Downloading packages:
+    10.52.16.224: 
+    10.52.16.224: Dependencies Resolved
+    10.52.16.224: 
+    10.52.16.224: ================================================================================
+    10.52.16.224:  Package  Arch     Version              Repository                         Size
+    10.52.16.224: ================================================================================
+    10.52.16.224: Updating:
+    10.52.16.224:  polkit   x86_64   0.112-26.el7_9.1     /polkit-0.112-26.el7_9.1.x86_64   480 k
+    10.52.16.224: 
+    10.52.16.224: Transaction Summary
+    10.52.16.224: ================================================================================
+    10.52.16.224: Upgrade  1 Package
+    10.52.16.224: 
+    10.52.16.224: Total size: 480 k
+    10.52.16.224: Downloading packages:
+    10.52.16.222: Running transaction check
+    10.52.16.224: Running transaction check
+    10.52.16.225: 
+    10.52.16.225: Dependencies Resolved
+    10.52.16.225: 
+    10.52.16.225: ================================================================================
+    10.52.16.225:  Package  Arch     Version              Repository                         Size
+    10.52.16.225: ================================================================================
+    10.52.16.225: Updating:
+    10.52.16.225:  polkit   x86_64   0.112-26.el7_9.1     /polkit-0.112-26.el7_9.1.x86_64   480 k
+    10.52.16.225: 
+    10.52.16.225: Transaction Summary
+    10.52.16.225: ================================================================================
+    10.52.16.225: Upgrade  1 Package
+    10.52.16.225: 
+    10.52.16.225: Total size: 480 k
+    10.52.16.225: Downloading packages:
+    10.52.16.225: Running transaction check
+    10.52.16.223: Running transaction test
+    10.52.16.222: Running transaction test
+    10.52.16.224: Running transaction test
+    10.52.16.225: Running transaction test
+    10.52.16.223: Transaction test succeeded
+    10.52.16.223: Running transaction
+    10.52.16.222: Transaction test succeeded
+    10.52.16.222: Running transaction
+    10.52.16.224: Transaction test succeeded
+    10.52.16.224: Running transaction
+    10.52.16.225: Transaction test succeeded
+    10.52.16.225: Running transaction
+    10.52.16.187: 
+    10.52.16.187: Dependencies Resolved
+    10.52.16.187: 
+    10.52.16.187: ================================================================================
+    10.52.16.187:  Package  Arch     Version              Repository                         Size
+    10.52.16.187: ================================================================================
+    10.52.16.187: Updating:
+    10.52.16.187:  polkit   x86_64   0.112-26.el7_9.1     /polkit-0.112-26.el7_9.1.x86_64   480 k
+    10.52.16.187: 
+    10.52.16.187: Transaction Summary
+    10.52.16.187: ================================================================================
+    10.52.16.187: Upgrade  1 Package
+    10.52.16.187: 
+    10.52.16.187: Total size: 480 k
+    10.52.16.187: Downloading packages:
+    10.52.16.187: Running transaction check
+    10.52.16.188: 
+    10.52.16.188: Dependencies Resolved
+    10.52.16.188: 
+    10.52.16.188: ================================================================================
+    10.52.16.188:  Package  Arch     Version              Repository                         Size
+    10.52.16.188: ================================================================================
+    10.52.16.188: Updating:
+    10.52.16.188:  polkit   x86_64   0.112-26.el7_9.1     /polkit-0.112-26.el7_9.1.x86_64   480 k
+    10.52.16.188: 
+    10.52.16.188: Transaction Summary
+    10.52.16.188: ================================================================================
+    10.52.16.188: Upgrade  1 Package
+    10.52.16.188: 
+    10.52.16.188: Total size: 480 k
+    10.52.16.188: Downloading packages:
+    10.52.16.188: Running transaction check
+    10.52.16.187: Running transaction test
+    10.52.16.223:   Updating   : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.224:   Updating   : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.222:   Updating   : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.225:   Updating   : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.188: Running transaction test
+    10.52.16.187: Transaction test succeeded
+    10.52.16.187: Running transaction
+    10.52.16.188: Transaction test succeeded
+    10.52.16.188: Running transaction
+    10.52.16.223:   Cleanup    : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.224:   Cleanup    : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.222:   Cleanup    : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.223:   Verifying  : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.225:   Cleanup    : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.224:   Verifying  : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.222:   Verifying  : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.225:   Verifying  : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.187:   Updating   : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.188:   Updating   : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.223:   Verifying  : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.223: 
+    10.52.16.223: Updated:
+    10.52.16.223:   polkit.x86_64 0:0.112-26.el7_9.1                                              
+    10.52.16.223: 
+    10.52.16.223: Complete!
+    10.52.16.224:   Verifying  : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.224: 
+    10.52.16.224: Updated:
+    10.52.16.224:   polkit.x86_64 0:0.112-26.el7_9.1                                              
+    10.52.16.224: 
+    10.52.16.224: Complete!
+    10.52.16.222:   Verifying  : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.222: 
+    10.52.16.222: Updated:
+    10.52.16.222:   polkit.x86_64 0:0.112-26.el7_9.1                                              
+    10.52.16.222: 
+    10.52.16.222: Complete!
+    10.52.16.225:   Verifying  : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.225: 
+    10.52.16.225: Updated:
+    10.52.16.225:   polkit.x86_64 0:0.112-26.el7_9.1                                              
+    10.52.16.225: 
+    10.52.16.225: Complete!
+    10.52.16.187:   Cleanup    : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.187:   Verifying  : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.188:   Cleanup    : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.188:   Verifying  : polkit-0.112-26.el7_9.1.x86_64                               1/2 
+    10.52.16.187:   Verifying  : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.187: 
+    10.52.16.187: Updated:
+    10.52.16.187:   polkit.x86_64 0:0.112-26.el7_9.1                                              
+    10.52.16.187: 
+    10.52.16.187: Complete!
+    10.52.16.188:   Verifying  : polkit-0.112-26.el7.x86_64                                   2/2 
+    10.52.16.188: 
+    10.52.16.188: Updated:
+    10.52.16.188:   polkit.x86_64 0:0.112-26.el7_9.1                                              
+    10.52.16.188: 
+    10.52.16.188: Complete!
+    #+end_example
+
+** Check polkit version (post-update)
+   Verify polkit package updated on all nodes.
+Refer polkit version from earlier steps (pre-update) above to verify if package is updated correctly or not.
+    #+NAME: verify_updated_polkit_version
+    #+HEADER: :results output :session :exports both
+    #+BEGIN_SRC sh :cache yes
+      clush -a 'rpm -qi polkit | grep -E "Version|Release"'
+    #+END_SRC
+
+    #+RESULTS[16bb819e5bc779f85c5309383b2576712c40b234]: verify_updated_polkit_version
+    #+begin_example
+    10.52.16.223: Version     : 0.112
+    10.52.16.223: Release     : 26.el7_9.1
+    10.52.16.224: Version     : 0.112
+    10.52.16.224: Release     : 26.el7_9.1
+    10.52.16.225: Version     : 0.112
+    10.52.16.225: Release     : 26.el7_9.1
+    10.52.16.222: Version     : 0.112
+    10.52.16.222: Release     : 26.el7_9.1
+    10.52.16.187: Version     : 0.112
+    10.52.16.187: Release     : 26.el7_9.1
+    10.52.16.188: Version     : 0.112
+    10.52.16.188: Release     : 26.el7_9.1
+    #+end_example
+
+** Note 1:
+   You can also perform steps mentioned in above steps one by one on each nodes in case there is
+any issue with while performing it on complete cluster using clush.
+
+
+** Note 2:
+   For any reason if package updates was not possible/successful, then follow mitigation steps provided at
+[[https://access.redhat.com/security/vulnerabilities/RHSB-2022-001][RHSB-2022-001]] that need to followed as per instructions provided.
